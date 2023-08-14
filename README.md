@@ -10,7 +10,8 @@
 
 call it via `uses: maxice8/eu4-mod-zip@v0.0.1`, use `.with` syntax to provide `mod-name`.
 
-Snippet example from one of Ante Bellum's internal mods:
+Snippet example from one of Ante Bellum's internal mods, creating a new release for every latest
+commit pushed to the `master` branch:
 
 ```yaml
 name: submod-release
