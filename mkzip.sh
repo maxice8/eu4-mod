@@ -12,7 +12,7 @@ mkdir -p "$ZIP_TMPDIR"/mod
 mkdir -p "$ZIP_TMPDIR"/repo
 
 # Checkout the repo here because we can't use actions/checkout@v3
-git clone --depth 1 "$REPOSITORY" "$ZIP_TMPDIR"/repo
+git clone --depth 1 "https://github.com/$REPOSITORY.git" "$ZIP_TMPDIR"/repo
 
 # Create zip archive
 {
