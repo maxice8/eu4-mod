@@ -14,7 +14,7 @@ git archive -o "$ZIP_PATH" --prefix="$PREFIX_NAME"/ HEAD
 # Create descriptor
 cat descriptor.mod > "$ZIP_TMPDIR"/"$MOD_NAME".mod
 # Add PATH to descriptor
-printf '\npath="%s"\n' "$PREFIX_NAME" >> "$ZIP_TMPDIR"/"$MOD_NAME".mod
+printf '\npath="mod/%s"\n' "$PREFIX_NAME" >> "$ZIP_TMPDIR"/"$MOD_NAME".mod
 
 # Add it to the zip, use -j to strip the paths so it only adds the file to the
 # root of the zip
