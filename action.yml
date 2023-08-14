@@ -26,7 +26,7 @@ inputs:
       Defaults to the name of the mod if not present.
   token:
     required: true
-    default: ${{ secrets.GITHUB_TOKEN }}
+    default: ${{ github.token }}
     description: >
       Token to acess the repository
 
