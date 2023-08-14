@@ -12,11 +12,12 @@ mkdir -p "$ZIP_TMPDIR"/mod
 mkdir -p "$ZIP_TMPDIR"/repo
 
 # Checkout the repo here because we can't use actions/checkout@v3
-git clone --depth 1 "https://github.com/$REPOSITORY.git" "$ZIP_TMPDIR"/repo
+cd "$ZIP_TMPDIR"
+git clone --depth 1 "https://github.com/$REPOSITORY.git" repo
 
 # Create zip archive
 {
-    cd "$ZIP_TMPDIR"/repo || exit 1
+    cd "$ZIP_TMPDIR"/repo
     git archive -o "$ZIP_PATH" --prefix="$PREFIX_NAME"/ HEAD
 }
 
