@@ -29,6 +29,11 @@ inputs:
     default: ${{ github.token }}
     description: >
       Token to acess the repository
+  repository:
+    required: true
+    default: ${{ github.repository }}
+    description: >
+      Repository to access
 
 outputs:
   zip-path:
@@ -41,6 +46,7 @@ runs:
   steps:
     - uses: action/checkout@v3
       with:
+        repository: ${{ inputs.repository }}
         token: ${{ inputs.token }}
 
     - name: zip
