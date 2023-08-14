@@ -9,17 +9,8 @@ ZIP_FINAL_PATH="$GITHUB_WORKSPACE/$ZIP_NAME.zip"
 
 # Create directory for the mod
 mkdir -p "$ZIP_TMPDIR"/mod
-mkdir -p "$ZIP_TMPDIR"/repo
 
-# Checkout the repo here because we can't use actions/checkout@v3
-cd "$ZIP_TMPDIR"
-git clone --depth 1 "https://$TOKEN@github.com/$REPOSITORY.git" repo
-
-# Create zip archive
-{
-    cd "$ZIP_TMPDIR"/repo
-    git archive -o "$ZIP_PATH" --prefix="$PREFIX_NAME"/ HEAD
-}
+git archive -o "$ZIP_PATH" --prefix="$PREFIX_NAME"/ HEAD
 
 # Create descriptor
 cat descriptor.mod > "$ZIP_TMPDIR"/mod/"$MOD_NAME".mod
