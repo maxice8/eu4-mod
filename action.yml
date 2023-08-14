@@ -1,0 +1,44 @@
+name: Zip Europa Universalis IV mod
+description: >
+  Creates a zip archive of the repository under a prefixed directory, alongside a descriptor file that can be extracted in the mod folder for easy use.
+author: Howard
+
+branding:
+  color: yellow
+  icon: archive
+
+inputs:
+  mod-name:
+    required: true
+    description: >
+      Name of the mod, used as the name of the .mod file.
+  zip-name:
+    required: true
+    default: ${{ inputs.mod-name }}
+    description: >
+      Final name of the zip file.
+      Defaults to the name of the mod if not present.
+  prefix-name:
+    required: true
+    default: ${{ inputs.mod-name }}
+    description: >
+      Name of the prefix directory.
+      Defaults to the name of the mod if not present.
+
+outputs:
+  zip-path:
+    description: >
+      Path to the created zip archive
+    value: ${{ steps.zip.outputs.zip-path }}
+
+runs:
+  using: composite
+  steps:
+    - id: zip
+      env:
+        MOD_NAME: ${{ inputs.mod-name }}
+        ZIP_NAME: ${{ inputs.zip-name }}
+        PREFIX_NAME: ${{ inputs.prefix-name }}
+        ZIP_TMPDIR: ${{ runner.temp }}
+      run: ./mkzip.sh
+      shell: bash
