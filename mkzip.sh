@@ -1,4 +1,5 @@
 #!/bin/sh
+set -eu
 
 : "${ZIP_NAME:=$MOD_NAME}"
 : "${PREFIX_NAME:=$MOD_NAME}"
