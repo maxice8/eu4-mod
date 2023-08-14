@@ -34,7 +34,9 @@ outputs:
 runs:
   using: composite
   steps:
-    - id: zip
+    - uses: action/checkout@v3
+    - name: zip
+      id: zip
       env:
         MOD_NAME: ${{ inputs.mod-name }}
         ZIP_NAME: ${{ inputs.zip-name }}
