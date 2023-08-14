@@ -11,16 +11,16 @@ inputs:
   mod-name:
     required: true
     description: >
-      Name of the mod, used as the name of the .mod file.
+      Name of the .mod descriptor file, .zip is prefixed to the end
   zip-name:
-    required: true
-    default: ${{ inputs.mod-name }}
+    required: false
+    default: ''
     description: >
       Final name of the zip file.
       Defaults to the name of the mod if not present.
   prefix-name:
-    required: true
-    default: ${{ inputs.mod-name }}
+    required: false
+    default: ''
     description: >
       Name of the prefix directory.
       Defaults to the name of the mod if not present.

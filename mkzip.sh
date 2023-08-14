@@ -1,4 +1,8 @@
 #!/bin/sh
+
+: "${ZIP_NAME:=MOD_NAME}"
+: "${PREFIX_NAME:=MOD_NAME}"
+
 # Create directory for the mod
 mkdir -p "$ZIP_TMPDIR"/mod
 
