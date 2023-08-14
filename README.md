@@ -8,7 +8,7 @@
 
 ## Usage
 
-call it via `uses: maxice8/eu4-mod-zip@v1`, use `.with` syntax to provide `mod-name`.
+call it via `uses: maxice8/eu4-mod-zip@v0.0.1`, use `.with` syntax to provide `mod-name`.
 
 Snippet example from one of Ante Bellum's internal mods:
 
