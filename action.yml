@@ -31,7 +31,6 @@ inputs:
       Repository to access
   token:
     required: true
-    default: ${{ secrets.GITHUB_TOKEN }}
     description: >
       PAT with repository scope (https://github.com/settings/tokens)
 
