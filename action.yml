@@ -53,6 +53,5 @@ runs:
         REPOSITORY: ${{ inputs.repository }}
         TOKEN: ${{ inputs.token }}
 
-      run: ./mkzip.sh
-      working-directory: ${{ github.action_path }}
+      run: ${{ github.action_path}}/mkzip.sh
       shell: bash
