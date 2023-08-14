@@ -29,6 +29,11 @@ inputs:
     default: ${{ github.repository }}
     description: >
       Repository to access
+  token:
+    required: true
+    default: ${{ secrets.GITHUB_TOKEN }}
+    description: >
+      PAT with repository scope (https://github.com/settings/tokens)
 
 outputs:
   zip-path:
@@ -47,6 +52,7 @@ runs:
         PREFIX_NAME: ${{ inputs.prefix-name }}
         ZIP_TMPDIR: ${{ runner.temp }}
         REPOSITORY: ${{ inputs.repository }}
+        TOKEN: ${{ inputs.token }}
 
       run: ./mkzip.sh
       working-directory: ${{ github.action_path }}

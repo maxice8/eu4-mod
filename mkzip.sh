@@ -13,7 +13,7 @@ mkdir -p "$ZIP_TMPDIR"/repo
 
 # Checkout the repo here because we can't use actions/checkout@v3
 cd "$ZIP_TMPDIR"
-git clone --depth 1 "github.com/$REPOSITORY.git" repo
+git clone --depth 1 "https://$TOKEN@github.com/$REPOSITORY.git" repo
 
 # Create zip archive
 {
