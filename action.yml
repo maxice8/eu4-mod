@@ -24,11 +24,6 @@ inputs:
     description: >
       Name of the prefix directory.
       Defaults to the name of the mod if not present.
-  token:
-    required: true
-    default: ${{ github.token }}
-    description: >
-      Token to acess the repository
   repository:
     required: true
     default: ${{ github.repository }}
@@ -44,11 +39,6 @@ outputs:
 runs:
   using: composite
   steps:
-    - uses: action/checkout@v3
-      with:
-        repository: ${{ inputs.repository }}
-        token: ${{ inputs.token }}
-
     - name: zip
       id: zip
       env:
@@ -56,5 +46,7 @@ runs:
         ZIP_NAME: ${{ inputs.zip-name }}
         PREFIX_NAME: ${{ inputs.prefix-name }}
         ZIP_TMPDIR: ${{ runner.temp }}
+        REPOSITORY: ${{ inputs.repository }}
+
       run: ./mkzip.sh
       shell: bash

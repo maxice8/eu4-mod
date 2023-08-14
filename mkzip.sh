@@ -5,9 +5,16 @@
 
 # Create directory for the mod
 mkdir -p "$ZIP_TMPDIR"/mod
+mkdir -p "$ZIP_TMPDIR"/repo
+
+# Checkout the repo here because we can't use actions/checkout@v3
+git clone --depth 1 "$REPOSITORY" "$ZIP_TMPDIR"/repo
 
 # Create zip archive
-git archive -o "$ZIP_TMPDIR"/mod/"$ZIP_NAME".zip --prefix="$PREFIX_NAME"/ HEAD
+{
+    cd "$ZIP_TMPDIR"/repo || exit 1
+    git archive -o "$ZIP_TMPDIR"/mod/"$ZIP_NAME".zip --prefix="$PREFIX_NAME"/ HEAD
+}
 
 # Create descriptor
 cat descriptor.mod > "$ZIP_TMPDIR"/mod/"$MOD_NAME".mod
