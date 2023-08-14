@@ -24,6 +24,11 @@ inputs:
     description: >
       Name of the prefix directory.
       Defaults to the name of the mod if not present.
+  token:
+    required: true
+    default: ${{ secrets.GITHUB_TOKEN }}
+    description: >
+      Token to acess the repository
 
 outputs:
   zip-path:
@@ -36,7 +41,8 @@ runs:
   steps:
     - uses: action/checkout@v3
       with:
-        path: ./source-repo/
+        token: ${{ inputs.token }}
+
     - name: zip
       id: zip
       env:
