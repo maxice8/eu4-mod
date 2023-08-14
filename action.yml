@@ -34,6 +34,7 @@ outputs:
 runs:
   using: composite
   steps:
+    - uses: actions/checkout@v3
     - name: zip
       id: zip
       env:
