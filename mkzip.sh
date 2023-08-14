@@ -13,7 +13,7 @@ mkdir -p "$ZIP_TMPDIR"/repo
 
 # Checkout the repo here because we can't use actions/checkout@v3
 cd "$ZIP_TMPDIR"
-git clone --depth 1 "https://github.com/$REPOSITORY.git" repo
+git clone --depth 1 "github.com/$REPOSITORY.git" repo
 
 # Create zip archive
 {
@@ -30,6 +30,6 @@ printf '\npath="%s"\n' "$PREFIX_NAME" >> "$ZIP_TMPDIR"/mod/"$MOD_NAME".mod
 # root of the zip
 zip -u "$ZIP_PATH" -j "$ZIP_TMPDIR"/mod/"$MOD_NAME".mod
 
-mv "$ZIP_TMPDIR/mod/$ZIP_NAME.zip" "$ZIP_FINAL_PATH"
+#mv "$ZIP_TMPDIR/mod/$ZIP_NAME.zip" "$ZIP_FINAL_PATH"
 
-echo "zip-path=$ZIP_FINAL_PATH" >> "$GITHUB_OUTPUT"
+echo "zip-path=$ZIP_PATH" >> "$GITHUB_OUTPUT"
