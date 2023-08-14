@@ -1,7 +1,7 @@
 name: Zip Europa Universalis IV mod
 description: >
   Creates a zip archive of the repository under a prefixed directory, alongside a descriptor file that can be extracted in the mod folder for easy use.
-author: Howard
+author: maxice8
 
 branding:
   color: yellow
