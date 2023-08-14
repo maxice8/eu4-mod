@@ -4,6 +4,7 @@
 : "${PREFIX_NAME:=$MOD_NAME}"
 
 ZIP_PATH="$ZIP_TMPDIR/mod/$ZIP_NAME.zip"
+ZIP_FINAL_PATH="$GITHUB_WORKSPACE/$ZIP_NAME.zip"
 
 # Create directory for the mod
 mkdir -p "$ZIP_TMPDIR"/mod
@@ -27,4 +28,6 @@ printf '\npath="%s"\n' "$PREFIX_NAME" >> "$ZIP_TMPDIR"/mod/"$MOD_NAME".mod
 # root of the zip
 zip -u "$ZIP_PATH" -j "$ZIP_TMPDIR"/mod/"$MOD_NAME".mod
 
-echo "zip-path=$ZIP_PATH" >> "$GITHUB_OUTPUT"
+mv "$ZIP_TMPDIR/mod/$ZIP_NAME.zip" "$ZIP_FINAL_PATH"
+
+echo "zip-path=$ZIP_FINAL_PATH" >> "$GITHUB_OUTPUT"
