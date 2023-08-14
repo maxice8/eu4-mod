@@ -28,7 +28,7 @@ jobs:
 
     steps:
       - id: zip
-        uses: maxice8/eu4-mod-zip@v1
+        uses: maxice8/eu4-mod-zip@v0.0.1
         with:
           # mod-name is always required
           mod-name: ${{ env.mod }}
