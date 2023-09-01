@@ -13,7 +13,8 @@ if [ -z "$MOD_NAME" ]; then
 		sed -n 's|^name="\(.*\)".*|\1|p' descriptor.mod \
 		| tr '[:upper:]' '[:lower:]' | tr ' ' - \
 	)"
-	export MOD_NAME="$mod_name"
+	MOD_NAME="$mod_name"
+	export MOD_NAME
 fi
 
 : "${ZIP_NAME:=$MOD_NAME}"
