@@ -9,9 +9,15 @@ branding:
 
 inputs:
   mod-name:
-    required: true
+    required: false
     description: >
-      Name of the .mod descriptor file, .zip is prefixed to the end
+      Name of the mod, if not provided reads from descriptor.mod,
+      if set replaces the name in the descriptor.mod.
+  descriptor-name:
+    required: false
+    description: >
+      Name of the .mod descriptor file, overrides mod-name.
+      Defaults to the name of the mod if not present.
   zip-name:
     required: false
     default: ''
@@ -39,6 +45,7 @@ runs:
       id: zip
       env:
         MOD_NAME: ${{ inputs.mod-name }}
+        DESCRIPTOR_NAME: ${{ inputs.descriptor-name }}
         ZIP_NAME: ${{ inputs.zip-name }}
         PREFIX_NAME: ${{ inputs.prefix-name }}
 

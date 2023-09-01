@@ -1,8 +1,24 @@
 #!/bin/sh
 set -eu
 
+# We were given a mod name.
+if [ -n "$MOD_NAME" ]; then
+	# replace the name in the descriptor mod	
+	sed "/^name=\"/s/.*/name=\"$MOD_NAME\"/" -i descriptor.mod
+fi
+
+if [ -z "$MOD_NAME" ]; then
+	# Generate the MOD_NAME from reading the descriptor
+	mod_name="$(\
+		sed -n 's|^name="\(.*\)".*|\1|p' descriptor.mod \
+		| tr '[:upper:]' '[:lower:]' | tr ' ' - \
+	)"
+	export MOD_NAME="$mod_name"
+fi
+
 : "${ZIP_NAME:=$MOD_NAME}"
 : "${PREFIX_NAME:=$MOD_NAME}"
+: "${DESCRIPTOR_NAME:=$MOD_NAME}"
 
 ZIP_PATH="$GITHUB_WORKSPACE/$ZIP_NAME.zip"
 
