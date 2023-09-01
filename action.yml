@@ -42,5 +42,5 @@ runs:
         ZIP_NAME: ${{ inputs.zip-name }}
         PREFIX_NAME: ${{ inputs.prefix-name }}
 
-      run: ${{ github.action_path}}/mkzip.sh
+      run: ${{ github.action_path }}/mkzip.sh
       shell: bash
