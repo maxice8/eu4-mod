@@ -1,6 +1,8 @@
 #!/bin/sh
 set -eu
 
+MOD_NAME="${MOD_NAME:-}"
+
 # We were given a mod name.
 if [ -n "$MOD_NAME" ]; then
 	# replace the name in the descriptor mod	
