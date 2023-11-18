@@ -5,11 +5,14 @@ MOD_NAME="${MOD_NAME:-}"
 
 # We were given a mod name.
 if [ -n "$MOD_NAME" ]; then
-	# replace the name in the descriptor mod	
-	sed "/^name=\"/s/.*/name=\"$MOD_NAME\"/" -i descriptor.mod
-	git add descriptor.mod
-	git -c user.name='who' -c user.email='cares@lmao.org' \
-		commit -m ok
+	# Check if the name is already the given one
+	grep -q "name=\"$MOD_NAME\"" descriptor.mod || {
+		# replace the name in the descriptor mod	
+		sed "/^name=\"/s/.*/name=\"$MOD_NAME\"/" -i descriptor.mod
+		git add descriptor.mod
+		git -c user.name='who' -c user.email='cares@lmao.org' \
+			commit -m ok
+	}
 fi
 
 if [ -z "$MOD_NAME" ]; then
